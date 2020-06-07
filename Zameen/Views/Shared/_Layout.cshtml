@@ -1,4 +1,4 @@
-﻿@using Zameen.Helpers
+﻿,@using Zameen.Helpers
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,65 +6,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Zameen</title>
     <link type="text/css" rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/lib/bootstrap/lumen/bootstrap.min.css" />
     <link type="text/css" rel="stylesheet" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" />
     <link type="text/css" rel="stylesheet" href="~/css/all.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/css/animate.css" />
     <link type="text/css" rel="stylesheet" href="~/css/site.css" />
+    <link type="text/css" rel="stylesheet" href="~/css/style.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom box-shadow shadow-lg mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Zameen</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
 
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Building" asp-action="Index">Buildings</a>
-                        </li>
+    <!-- ============================ Navbar ============================ -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white fixed-top" id="main_navbar">
+        <div class="container">
+            <a class="navbar-brand" asp-action="Index" asp-controller="Home">Zameen</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                        @if (User.IsInRole(Roles.Admin))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" id="register" asp-area="Identity" asp-page="/Account/Register">Add User</a>
-                            </li>
-                        }
-
-                        @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Executive))
-                        {
+            <div class="collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ml-2 flex-grow-1">
+                        <a class="nav-link" href="Reports.aspx">Buildings</a>
+                    </li>
+                    <li class="nav-item ml-2">
+                        <a class="nav-link" href="Transactions.aspx">Add New User</a>
+                    </li>
+                    <li class="nav-item dropdown ml-2">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Setup
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="Customer.aspx">Customer</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Setup
+                                <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Property
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" asp-area="" asp-controller="Country" asp-action="Index">Country</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="City" asp-action="Index">City</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Building" asp-action="Index">Building</a>
-                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                    <li><a class="dropdown-item" href="Building.aspx">Building</a></li>
+                                    <li><a class="dropdown-item" href="Floor.aspx">Floor</a></li>
+                                    <li><a class="dropdown-item" href="Shop.aspx">Shop / Office</a></li>
+                                </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Building
+                                <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    General
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" asp-area="" asp-controller="Floor" asp-action="Index">Floor</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Customer" asp-action="Index">Customer</a>
-                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                    <li><a class="dropdown-item" href="City.aspx">City</a></li>
+                                    <li><a class="dropdown-item" href="Country.aspx">Country</a></li>
+                                </ul>
                             </li>
-                        }
-                    </ul>
-                </div>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Branches
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                    <li><a class="dropdown-item" href="City.aspx">Lahore</a></li>
+                                    <li><a class="dropdown-item" href="Country.aspx">Multan</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+    <!-- ============================ Navbar Ends ============================ -->
+    @*<header>
+            <nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom box-shadow shadow-lg mb-3 fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Building" asp-action="Index">Broom</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Building" asp-action="Index">Home</a>
+                            </li>
+
+                            @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Executive))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Dropdown
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" asp-area="" asp-controller="Country" asp-action="Index">Makes</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="City" asp-action="Index">Models</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Building" asp-action="Index">Bikes</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Floor" asp-action="Index">Bikes</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Shop" asp-action="Index">Bikes</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Client" asp-action="Index">Bikes</a>
+
+                                        @if (User.IsInRole(Roles.Admin))
+                                        {
+                                            <a class="dropdown-item" id="register" asp-area="Identity" asp-page="/Account/Register">Add User</a>}
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>*@
+
 
     <!-- Body Content -->
-    <div class="container">
+    <div class="container mt-5">
+        @*<div class="my-3">
+                <br />
+            </div>*@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -84,6 +144,7 @@
 
 
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    @*<script type="text/javascript" src="~/lib/bootstrap/dist/js/popper.js"></script>*@
     <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>

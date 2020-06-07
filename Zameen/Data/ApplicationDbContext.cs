@@ -25,9 +25,9 @@ namespace Zameen.Data
 
         public DbSet<Shop> Shops { get; set; }
 
-        public DbSet<Customer> Customers { get; set; }
-
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+
+        public DbSet<Client> Clients { get; set; }
 
     }
 }

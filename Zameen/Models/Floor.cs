@@ -14,7 +14,7 @@ namespace Zameen.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please Enter Description!")]
-        [Display(Name = "Description")]
+        [Display(Name = "Floor")]
         [StringLength(255)]
         public string Name { get; set; }
 

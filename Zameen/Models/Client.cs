@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace Zameen.Models
 {
-    public class Customer
+    public class Client
     {
 
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Description!")]
+        [Required(ErrorMessage = "Please Enter Name!")]
         [Display(Name = "Name")]
         [StringLength(255)]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Address!")]
+        [Required(ErrorMessage = "Please Enter Area!")]
         [Display(Name = "Address")]
         [StringLength(255)]
         public string Address { get; set; }
@@ -32,7 +32,7 @@ namespace Zameen.Models
         [Required(ErrorMessage = "Please Enter CNIC!")]
         [Display(Name = "CNIC")]
         [StringLength(15)]
-        public string CNIC { get; set; }
+        public string Cnic { get; set; }
 
         [Required(ErrorMessage = "Please Enter Mobile!")]
         [Display(Name = "Mobile")]
@@ -43,6 +43,7 @@ namespace Zameen.Models
         [Display(Name = "Landline")]
         [StringLength(20)]
         public string Landline { get; set; }
+
 
         public Country Country { get; set; }
 

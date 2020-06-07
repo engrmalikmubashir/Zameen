@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace Zameen.Models.ViewModels
 {
-    public class CustomerViewModel
+    public class ClientViewModel
     {
-        public Customer Customer { get; set; }
+
+        public Client Client { get; set; }
 
         [Display(Name = "Country")]
         public IEnumerable<Country> Countries { get; set; }
 
         [Display(Name = "City")]
         public IEnumerable<City> Cities { get; set; }
+
     }
 }
